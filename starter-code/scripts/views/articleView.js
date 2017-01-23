@@ -18,6 +18,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This method is using the compile method of handlebars for the option-template. It uses map for the array of all authors, and the output is appended as a string to the author-filter id in the DOM. Then it calls on the Article.allCategories method which has a callback function with rows. It appends the row.category values to the category-filter id in the DOM.
   articleView.populateFilters = function() {
     var options;
     var template = Handlebars.compile($('#option-template').text());
@@ -37,6 +38,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This method registers an event handler for when a filter gets selected. Then it updates the page using the filter value that is selected.
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       var resource = this.id.replace('-filter', '');
@@ -86,6 +88,7 @@
    }; */
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This method shows the articles section and hides the other sections. Then it clears out the articles. THen it appends each article to the page and calls on populateFilters and handleFilters.
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 
